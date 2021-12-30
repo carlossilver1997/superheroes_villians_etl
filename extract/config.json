@@ -1,0 +1,8 @@
+{
+    "super_hero_site": {
+        "url": "https://superheroapi.com",
+        "query_path": {
+            "super_heros": "tr > td"
+        }
+    }
+}
