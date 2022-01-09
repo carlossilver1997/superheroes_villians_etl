@@ -16,7 +16,7 @@ class Hero():
         
 
 class HeroDetail(Hero):
-    def __init__(self, id, name, intelligence, strength, speed, durability, power, combat, publisher, alignment, gender, race, height, weight, eye_color, hair_color, ocuppation, image):
+    def __init__(self, id, name, intelligence, strength, speed, durability, power, combat, publisher, alignment, gender, height, weight, image):
         super().__init__(id, name)
         self.intelligence = intelligence
         self.strength = strength
@@ -27,12 +27,9 @@ class HeroDetail(Hero):
         self.publisher = publisher
         self.alignment = alignment
         self.gender = gender
-        self.race = race
         self.height = self.__get_weight_or_hight(height)
         self.weight = self.__get_weight_or_hight(weight)
-        self.eye_color = eye_color
-        self.hair_color = hair_color
-        self.ocuppation = ocuppation
+        
         self.image = image
 
     def __get_weight_or_hight(self, list_values):
@@ -94,11 +91,7 @@ class HeroDetailPage(BasePage):
             _response_to_json['biography']['publisher'],
             _response_to_json['biography']['alignment'],
             _response_to_json['appearance']['gender'],
-            _response_to_json['appearance']['race'],
             _response_to_json['appearance']['height'],
             _response_to_json['appearance']['weight'],
-            _response_to_json['appearance']['eye-color'],
-            _response_to_json['appearance']['hair-color'],
-            _response_to_json['work']['occupation'],
             _response_to_json['image']['url'],
         )
