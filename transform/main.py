@@ -16,6 +16,7 @@ def main(filename):
     df = _fill_values_with_median(df, ['strength', 'combat', 'durability', 'intelligence', 'power', 'speed'], 'DC Comics')
     df = _convert_height(df)
     df = _convert_weight(df)
+    df = _remove_duplicate_entries(df, 'name')
     _save_data(df, filename)
     return df
     
@@ -50,13 +51,12 @@ def convert_to_meters(value):
             if isinstance(float(value), float):
                 value = float(value)
                 value = value / 100
-        elif "meters":
-            value = value.strip("meters")
+        elif "meters" in value:
+            value = float(value.strip("meters"))
         else:
             value = 0
     except:
         value = 0
-    
     return value
 
 def convert_to_kilograms(value):
@@ -88,6 +88,11 @@ def _convert_weight(df):
 def _save_data(df, filename):
     logger.info('Saving data at location: {}'.format(filename))
     df.to_csv('clean_{}'.format(filename))
+
+def _remove_duplicate_entries(df, column_name):
+    logger.info('Removing duplicate entries')
+    df.drop_duplicates(subset=[column_name], keep='first', inplace=True)
+    return df
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

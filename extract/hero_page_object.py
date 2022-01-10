@@ -29,7 +29,6 @@ class HeroDetail(Hero):
         self.gender = gender
         self.height = self.__get_weight_or_hight(height)
         self.weight = self.__get_weight_or_hight(weight)
-        
         self.image = image
 
     def __get_weight_or_hight(self, list_values):
