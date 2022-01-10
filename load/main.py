@@ -16,7 +16,6 @@ def main(filename):
     session = Session()
     heroes = pd.read_csv(filename)
     for index, row in heroes.iterrows():
-        print(row)
         logger.info('Loading article {} into DB'.format(row['id']))
         hero = HeroVillian(row['id'], row['name'], row['intelligence'], row['strength'], row['speed'], row['durability'], row['power'], row['combat'], row['publisher'], row['alignment'], row['gender'], row['height'], row['weight'], row['image'])
         session.add(hero)

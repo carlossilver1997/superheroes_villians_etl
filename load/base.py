@@ -16,7 +16,6 @@ DB_USER_NAME, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT = (
     os.getenv('DB_PORT')
 )
 url = 'mysql+pymysql://{}:{}@{}:{}/{}'.format(DB_USER_NAME, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME)
-print(url)
 
 engine = create_engine(url)
 Session = sessionmaker(bind=engine)

@@ -59,7 +59,6 @@ class HeroPage(BasePage):
 
     @property
     def heroes(self):
-        # print(self._select(self._queries['super_heros']))
         heroes_list = list()
         for df in pd.read_html(self._response):
             for index, row in df.iterrows():
