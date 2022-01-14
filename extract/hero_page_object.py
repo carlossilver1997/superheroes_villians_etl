@@ -63,7 +63,7 @@ class HeroPage(BasePage):
         for df in pd.read_html(self._response):
             for index, row in df.iterrows():
                 heroes_list.append(Hero(row["#ID"], row['Chracter Name']))
-        return heroes_list
+        return heroes_list[0:5]
 
 
     

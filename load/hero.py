@@ -1,9 +1,14 @@
+import os
 from sqlalchemy import Column, String, Integer, Float
 from base import Base
+from dotenv import load_dotenv
 
+load_dotenv()
+
+DB_TABLE = os.getenv('DB_TABLE')
 
 class HeroVillian(Base):
-    __tablename__ = 'heroes_villians'
+    __tablename__ = DB_TABLE
 
     id = Column(Integer, primary_key=True)
     name = Column(String(100), unique=True)

@@ -1,21 +1,26 @@
+import os
 import argparse
 import logging
 
 import pandas as pd
 from hero import HeroVillian
 from base import Base, engine, Session
+from dotenv import load_dotenv
 
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 
 logger = logging.getLogger(__name__)
+
+DB_TRUNCATE_QUERY = os.getenv('DB_TRUNCATE_QUERY')
 
 
 def main(filename):
     Base.metadata.create_all(engine)
     session = Session()
     heroes = pd.read_csv(filename)
-    session.execute('''TRUNCATE TABLE heroes_villians_etl.heroes_villians''')
+    session.execute('''{}'''.format(DB_TRUNCATE_QUERY))
 
     for index, row in heroes.iterrows():
         logger.info('Loading article {} into DB'.format(row['id']))
