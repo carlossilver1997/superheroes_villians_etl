@@ -7,7 +7,7 @@ load_dotenv()
 
 DB_TABLE = os.getenv('DB_TABLE')
 
-class HeroVillian(Base):
+class HeroVillain(Base):
     __tablename__ = DB_TABLE
 
     id = Column(Integer, primary_key=True)

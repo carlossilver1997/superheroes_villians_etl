@@ -40,7 +40,7 @@ def _fill_values_with_median(df, name_columns, publisher):
     return df
 
 def _remove_heroes_with_not_valid_publisher(df):
-    logger.info('Removing SuperHeroes and Villians don\'t belong Marver or DC Comics universes')
+    logger.info('Removing SuperHeroes and Villains don\'t belong Marver or DC Comics universes')
     df.drop(df.loc[(df['publisher'] != 'Marvel Comics') & (df['publisher'] != 'DC Comics'), :].index, inplace=True)
     return df
 
@@ -77,7 +77,7 @@ def convert_to_kilograms(value):
         
 
 def _convert_height(df):
-    logger.info('Removing SuperHeroes and Villians don\'t belong Marver or DC Comics universes')
+    logger.info('Removing SuperHeroes and Villains don\'t belong Marver or DC Comics universes')
     df["height"] = df["height"].apply(convert_to_meters)
     return df
 
