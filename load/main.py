@@ -15,6 +15,8 @@ def main(filename):
     Base.metadata.create_all(engine)
     session = Session()
     heroes = pd.read_csv(filename)
+    session.execute('''TRUNCATE TABLE heroes_villians_etl.heroes_villians''')
+
     for index, row in heroes.iterrows():
         logger.info('Loading article {} into DB'.format(row['id']))
         hero = HeroVillian(row['id'], row['name'], row['intelligence'], row['strength'], row['speed'], row['durability'], row['power'], row['combat'], row['publisher'], row['alignment'], row['gender'], row['height'], row['weight'], row['image'])
